@@ -1,10 +1,6 @@
 export WANDB_MODE=disabled
 
-train_data="\
-    ../example_data/retrieval \
-    ../example_data/sts/sts.jsonl \
-    ../example_data/classification-no_in_batch_neg \
-    ../example_data/clustering-no_in_batch_neg "
+train_data="../data/mulabel"
 
 # set large epochs and small batch size for testing
 num_train_epochs=4
@@ -25,15 +21,18 @@ model_args="\
 data_args="\
     --train_data $train_data \
     --cache_path ~/.cache \
-    --train_group_size 8 \
-    --query_max_len 512 \
-    --passage_max_len 512 \
-    --pad_to_multiple_of 8 \
-    --knowledge_distillation False \
+    --train_group_size 4 \
+    --query_max_len 2048 \
+    --passage_max_len 2048 \
+    --pad_to_multiple_of 4 \
+    --knowledge_distillation True \
+    --same_dataset_within_batch True \
+    --small_threshold 0 \
+    --drop_threshold 0 \
 "
 
 training_args="\
-    --output_dir ./test_encoder_only_m3_bge-m3 \
+    --output_dir ./mulabel_bge-m3 \
     --overwrite_output_dir \
     --learning_rate 1e-5 \
     --fp16 \
@@ -42,6 +41,7 @@ training_args="\
     --dataloader_drop_last True \
     --warmup_ratio 0.1 \
     --gradient_checkpointing \
+    --deepspeed ../../ds_stage0.json \
     --logging_steps 1 \
     --save_steps 1000 \
     --negatives_cross_device \
