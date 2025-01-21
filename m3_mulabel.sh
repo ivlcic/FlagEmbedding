@@ -41,7 +41,7 @@ training_args="\
     --dataloader_drop_last True \
     --warmup_ratio 0.1 \
     --gradient_checkpointing \
-    --deepspeed ../../ds_stage0.json \
+    --deepspeed examples/finetune/ds_stage0.json \
     --logging_steps 1 \
     --save_steps 1000 \
     --negatives_cross_device \
