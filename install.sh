@@ -16,3 +16,6 @@ pip install wheel
 pip install packaging
 pip install torch torchvision torchaudio
 pip install -e .\[finetune\]
+
+
+scp -P 17352 ~/projects/emma/data/mulabel/split/bge_m3_mulabel_sl_p1_s0_hn.jsonl root@149.7.4.9:/root/data/mulabel/
