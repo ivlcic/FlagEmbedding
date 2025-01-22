@@ -22,8 +22,8 @@ data_args="\
     --train_data $train_data \
     --cache_path ~/.cache \
     --train_group_size 4 \
-    --query_max_len 2048 \
-    --passage_max_len 2048 \
+    --query_max_len 4096 \
+    --passage_max_len 4096 \
     --pad_to_multiple_of 4 \
     --knowledge_distillation True \
     --same_dataset_within_batch True \
