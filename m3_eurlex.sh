@@ -1,6 +1,6 @@
 export WANDB_MODE=disabled
 
-train_data="../data/mulabel"
+train_data="../data/eurlex"
 
 # set large epochs and small batch size for testing
 num_train_epochs=4
@@ -32,7 +32,7 @@ data_args="\
 "
 
 training_args="\
-    --output_dir ./mulabel_bge-m3 \
+    --output_dir ./eurlex_bge-m3 \
     --overwrite_output_dir \
     --learning_rate 1e-5 \
     --fp16 \
